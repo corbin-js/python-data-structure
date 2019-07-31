@@ -1,4 +1,4 @@
-class Array(object):
+class BaseArray(object):
     def __init__(self, size = 32):
         self.__size = size
         self.__items = [None] * size
@@ -30,7 +30,7 @@ class Array(object):
         return
 
 if __name__ == '__main__':
-    a = Array(10)
+    a = BaseArray(10)
     for i in range(len(a)):
         a[i] = i
 
