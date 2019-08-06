@@ -4,7 +4,7 @@ class Node(object):
         self.next = None
 
 
-class Chain(object):
+class LinkedList(object):
     def __init__(self):
         self._size = 0
         self._root = Node()
@@ -39,6 +39,17 @@ class Chain(object):
         point.next = node
         self._size+=1
         
+    def removeIndex(self,index):
+        if index >= self._size:
+            return None
+        point = self._root
+        for i in range(index):
+            point = self._root.next
+        n=point.next
+        point.next=n.next
+        self._size-=1
+        return n
+
     def remove(self,value):
         pre = self._root
         point = self._root.next
@@ -53,7 +64,7 @@ class Chain(object):
 
     def getItem(self,index):
         point = self._root.next
-        if(index>self._size):
+        if(index>=self._size):
             raise "越界"
         for i in range(index):
             point = point.next
@@ -72,7 +83,7 @@ class Chain(object):
     def print(self):
         if self._size==0:
             print('empty linked list')
-        point = self._root.next
+        point = self._root
         while point is not None:
-            print(point.value, end=" ")
             point=point.next
+            print(point.value, end=" ")

@@ -11,7 +11,7 @@ class DynamicArray:
         return self._length
     
     def add(self,item):
-        self._checkEntend()
+        self._checkExtend()
         self._context[self._length]=item
         self._length+=1
     
@@ -24,7 +24,7 @@ class DynamicArray:
                 break
                 
     def insert(self,index,item):
-        self._checkEntend()
+        self._checkExtend()
         for i in range(self._length,index,-1):#一个个往后移
             self._context[i]=self._context[i-1]
         self._context[index]=item
@@ -38,7 +38,7 @@ class DynamicArray:
         
         return -1
     
-    def _checkEntend(self):#检查数组大小是否撑满
+    def _checkExtend(self):#检查数组大小是否撑满
         if self._length+1==self._capacity:
             #此处扩展数组长度，每次扩展一倍
             self._capacity *= 2
